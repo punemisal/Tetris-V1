@@ -60,15 +60,15 @@ resource "aws_security_group" "Jenkins-sg" {
 }
 
 resource "aws_instance" "web" {
-  ami                    = "ami-0287a05f0ef0e9d9a"
+  ami                    = "ami-0866a3c8686eaeeba"
   instance_type          = "t2.large"
-  key_name               = "bundi"
+  key_name               = "kaju"
   vpc_security_group_ids = [aws_security_group.Jenkins-sg.id]
   user_data              = templatefile("./install_jenkins.sh", {})
   iam_instance_profile   = aws_iam_instance_profile.example_profile.name
 
   tags = {
-    Name = "Jenkins-sonar"
+    Name = "Jenkins-ARGOCD"
   }
 
   root_block_device {
